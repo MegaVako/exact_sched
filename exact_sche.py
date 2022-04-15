@@ -2,7 +2,7 @@
 #part A
 '''
 c_arr = [3, 3, 6, 4]
-t_arr = [8, 13, 20, 30]
+t_arr = [8, 14, 20, 30]
 '''
 
 #part B
@@ -40,7 +40,7 @@ if q2:
     d_arr = [0, 0, 0, 10]
 
     for i in range(len(c_arr)):
-        c_arr[i] += 1
+        c_arr[i] += 2
         t_arr[i] += d_arr[i]
 
 iter_0_sum = 0
