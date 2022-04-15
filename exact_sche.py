@@ -19,22 +19,30 @@ t_arr = [12, 16, 37, 52]
 
 #part D
 '''
-c_arr = [2, 10, 9]
-t_arr = [6, 24, 36]
+c_arr = [2, 10, 6]
+t_arr = [6, 24, 39]
 '''
 
+#part E
+#c_arr = [2, 10, 1]
+#t_arr = [6, 24, 6]
+c_arr = [1, 2, 10]
+t_arr = [4, 6, 24]
+
 #q2
+'''
 c_arr = [5, 11, 18, 16]
 t_arr = [50, 60, 75, 110]
+'''
 
 num_task = len(c_arr)
 r_iter_0 = []
 
-q2 = True
-#q2 = False
+#q2 = True
+q2 = False
 
-b_arr = [0, 0, 0, 0]
-d_arr = [0, 0, 0, 0]
+b_arr = [0, 0, 0, 0, 0]
+d_arr = [0, 0, 0, 0, 0]
 if q2:
     b_arr = [4, 2, 16, 0]
     d_arr = [0, 0, 0, 10]
