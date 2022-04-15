@@ -23,17 +23,40 @@ c_arr = [2, 10, 9]
 t_arr = [6, 24, 36]
 '''
 
+#q2
+c_arr = [5, 11, 18, 16]
+t_arr = [50, 60, 75, 110]
+
+num_task = len(c_arr)
+r_iter_0 = []
+
+q2 = True
+#q2 = False
+
+b_arr = [0, 0, 0, 0]
+d_arr = [0, 0, 0, 0]
+if q2:
+    b_arr = [4, 2, 16, 0]
+    d_arr = [0, 0, 0, 10]
+
+    for i in range(len(c_arr)):
+        c_arr[i] += 1
+        t_arr[i] += d_arr[i]
+
+iter_0_sum = 0
+for num in c_arr:
+    iter_0_sum += num
+    r_iter_0.append(iter_0_sum)
+
 
 import math
 
-num_task = len(c_arr)
-r_iter_0 = sum(c_arr)
 
 def calculate_iteration(prev_resp_time, idx):
     ret = 0
-    for i in range(num_task):
+    for i in range(idx+1):
         if i == idx:
-            ret += c_arr[i]
+            ret += c_arr[i] + b_arr[i]
         else:
             ret += math.ceil(prev_resp_time / t_arr[i]) * c_arr[i]
     return ret
@@ -42,7 +65,7 @@ r_arr = []
 r_arr.append([])
 # init r
 for i in range(num_task):
-   r_arr[0].append(r_iter_0)
+   r_arr[0].append(r_iter_0[i] + b_arr[i])
 
 # calculation
 iter_cnt = 1
