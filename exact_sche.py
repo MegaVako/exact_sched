@@ -26,30 +26,30 @@ t_arr = [6, 24, 39]
 #part E
 #c_arr = [2, 10, 1]
 #t_arr = [6, 24, 6]
+'''
 c_arr = [1, 2, 10]
 t_arr = [4, 6, 24]
+'''
 
 #q2
-'''
-c_arr = [5, 11, 18, 16]
-t_arr = [50, 60, 75, 110]
-'''
+c0 = 26
+c_arr = [c0, 10, 25, 15]
+t_arr = [59, 60, 155, 210]
 
 num_task = len(c_arr)
 r_iter_0 = []
 
-#q2 = True
-q2 = False
+q2 = True
 
 b_arr = [0, 0, 0, 0, 0]
-d_arr = [0, 0, 0, 0, 0]
+d_arr = [59, 50, 135, 180]
 if q2:
-    b_arr = [4, 2, 16, 0]
-    d_arr = [0, 0, 0, 10]
+    b_arr = [0, 4, 5, 0]
+    delta_arr = [0, 0, 0, 0, 0]
 
     for i in range(len(c_arr)):
-        c_arr[i] += 2
-        t_arr[i] += d_arr[i]
+        c_arr[i] += 1
+        t_arr[i] += delta_arr[i]
 
 iter_0_sum = 0
 for num in c_arr:
@@ -100,7 +100,7 @@ for i in range(len(r_arr)):
 # check schedulability
 last_row = r_arr[-1]
 for i in range(num_task):
-    if last_row[i] <= t_arr[i]:
+    if last_row[i] <= d_arr[i]:
         print("Task", i+1, "scheduable")
     else:
         print("Task", i+1, "NOT scheduable")
