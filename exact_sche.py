@@ -31,34 +31,12 @@ c_arr = [1, 2, 10]
 t_arr = [4, 6, 24]
 '''
 
-#q2
-c0 = 26
-c_arr = [c0, 10, 25, 15]
-t_arr = [59, 60, 155, 210]
-
-num_task = len(c_arr)
-r_iter_0 = []
-
-q2 = True
-
-b_arr = [0, 0, 0, 0, 0]
-d_arr = [59, 50, 135, 180]
-if q2:
-    b_arr = [0, 4, 5, 0]
-    delta_arr = [0, 0, 0, 0, 0]
-
-    for i in range(len(c_arr)):
-        c_arr[i] += 1
-        t_arr[i] += delta_arr[i]
-
-iter_0_sum = 0
-for num in c_arr:
-    iter_0_sum += num
-    r_iter_0.append(iter_0_sum)
-
+#c1 = 0.036
+#c1 = 0.01
+#c1 = 1.31
+c1 = 1.25
 
 import math
-
 
 def calculate_iteration(prev_resp_time, idx):
     ret = 0
@@ -69,39 +47,70 @@ def calculate_iteration(prev_resp_time, idx):
             ret += math.ceil(prev_resp_time / t_arr[i]) * c_arr[i]
     return ret
 
-r_arr = []
-r_arr.append([])
-# init r
-for i in range(num_task):
-   r_arr[0].append(r_iter_0[i] + b_arr[i])
+#q2
+#c0 = 26
+for i in range(0, 1000):
+    print(c1)
+    c_arr = [1, c1, 3, 4]
+    t_arr = [4, 6, 10, 20]
 
-# calculation
-iter_cnt = 1
-while True:
-    all_same = True
-    curr_arr = []
-    prev_arr = r_arr[iter_cnt-1]
+    num_task = len(c_arr)
+    r_iter_0 = []
+
+    q2 = False
+
+    b_arr = [0, 0, 0, 0, 0]
+    d_arr = [59, 50, 135, 180]
+    if q2:
+        b_arr = [0, 4, 5, 0]
+        delta_arr = [0, 0, 0, 0, 0]
+
+        for i in range(len(c_arr)):
+            c_arr[i] += 1
+            t_arr[i] += delta_arr[i]
+
+    iter_0_sum = 0
+    for num in c_arr:
+        iter_0_sum += num
+        r_iter_0.append(iter_0_sum)
+
+
+
+    r_arr = []
+    r_arr.append([])
+    # init r
     for i in range(num_task):
-        curr_resp_time = calculate_iteration(prev_arr[i], i)
-        curr_arr.append(curr_resp_time)
+       r_arr[0].append(r_iter_0[i] + b_arr[i])
 
-        if curr_resp_time != prev_arr[i]:
-            all_same = False
+    # calculation
+    iter_cnt = 1
+    while True:
+        all_same = True
+        curr_arr = []
+        prev_arr = r_arr[iter_cnt-1]
+        for i in range(num_task):
+            curr_resp_time = calculate_iteration(prev_arr[i], i)
+            curr_arr.append(curr_resp_time)
 
-    r_arr.append(curr_arr)
-    if (all_same):
-        break
-    iter_cnt += 1
+            if curr_resp_time != prev_arr[i]:
+                all_same = False
 
-# display iteration
-for i in range(len(r_arr)):
-    print(i, r_arr[i])
+        r_arr.append(curr_arr)
+        if (all_same):
+            break
+        iter_cnt += 1
 
-# check schedulability
-last_row = r_arr[-1]
-for i in range(num_task):
-    if last_row[i] <= d_arr[i]:
-        print("Task", i+1, "scheduable")
-    else:
-        print("Task", i+1, "NOT scheduable")
+    # display iteration
+    for i in range(len(r_arr)):
+        print(i, r_arr[i])
+
+    # check schedulability
+    last_row = r_arr[-1]
+    for i in range(num_task):
+        if last_row[i] <= t_arr[i]:
+            print("Task", i+1, "scheduable")
+        else:
+            print("Task", i+1, "NOT scheduable")
+            exit(1)
+    c1 += 0.0001
 
